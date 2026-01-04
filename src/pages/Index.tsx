@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
@@ -311,22 +310,21 @@ const Index = () => {
               Ответы на самые популярные вопросы о заработке на буксах и партнерках
             </p>
           </div>
-          <Accordion type="single" collapsible className="space-y-4">
+          <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="glass-effect rounded-xl px-6 border-2"
-              >
-                <AccordionTrigger className="text-left hover:no-underline">
-                  <span className="font-semibold text-lg">{faq.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
+              <Card key={index} className="border-2">
+                <CardHeader>
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <Icon name="HelpCircle" size={20} className="text-primary" />
+                    {faq.question}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">{faq.answer}</p>
+                </CardContent>
+              </Card>
             ))}
-          </Accordion>
+          </div>
         </div>
       </section>
 
